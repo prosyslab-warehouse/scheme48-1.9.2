@@ -1,0 +1,55 @@
+Description: use hardening flags in all modules
+Author: Thorsten Alteholz <debian@alteholz.de>
+Index: scheme48/Makefile.in
+===================================================================
+--- scheme48.orig/Makefile.in	2013-03-14 14:18:43.000000000 +0100
++++ scheme48/Makefile.in	2013-03-14 14:19:20.000000000 +0100
+@@ -49,8 +49,8 @@
+ datadir = @datadir@
+ 
+ DYNAMIC_EXTERNALS_CFLAGS=@DYNAMIC_EXTERNALS_CFLAGS@
+-DYNAMIC_EXTERNALS_LDFLAGS=@DYNAMIC_EXTERNALS_LDFLAGS@
+-DYNAMIC_EXTERNALS_LDFLAGS_IN_PLACE=@DYNAMIC_EXTERNALS_LDFLAGS_IN_PLACE@ -lc
++DYNAMIC_EXTERNALS_LDFLAGS=@DYNAMIC_EXTERNALS_LDFLAGS@ -z relro
++DYNAMIC_EXTERNALS_LDFLAGS_IN_PLACE=@DYNAMIC_EXTERNALS_LDFLAGS_IN_PLACE@ -lc -z relro
+ ### End of `configure' section###
+ 
+ # HP 9000 series, if you don't have gcc
+@@ -249,7 +249,7 @@
+ 		$(posix_dir)/errno.o	$(posix_dir)/syslog.o
+ 
+ $(POSIX_EXTERNAL) : $(POSIX_OBJECTS)
+-	$(LD) -o $@ $(POSIX_OBJECTS) $(DYNAMIC_EXTERNALS_LDFLAGS_IN_PLACE) 
++	$(LD) -o $@ $(POSIX_OBJECTS) $(DYNAMIC_EXTERNALS_LDFLAGS_IN_PLACE)
+ 
+ 
+ # End of POSIX rules
+@@ -362,7 +362,7 @@
+ # End of BIBOP GC rules
+ 
+ $(VM): c/main.o $(LIBSCHEME48) c/scheme48.exp c/scheme48.def
+-	$(CC) $(LDFLAGS) $(LDFLAGS_VM) $(CFLAGS) -o $@ c/main.o	$(LIBSCHEME48) $(LIBS)
++	$(CC) $(LDFLAGS) $(LDFLAGS_VM) $(CFLAGS) $(CPPFLAGS) -o $@ c/main.o	$(LIBSCHEME48) $(LIBS)
+ 	# Cygwin
+ 	if test -x /usr/bin/dlltool; then \
+ 		dlltool --dllname $(VM).exe --output-lib $(VM).a --def $(srcdir)/c/scheme48.def; \
+@@ -374,7 +374,7 @@
+ 	ranlib $@
+ 
+ script-interpreter: c/script-interpreter.o
+-	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ c/script-interpreter.o
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -o $@ c/script-interpreter.o
+ 
+ c/main.o: c/main.c c/scheme48vm.h c/scheme48heap.h
+ 	$(CC) -c $(CFLAGS) -o $@ \
+@@ -525,8 +525,8 @@
+ 	    -e 's,@libdir\@,$(libdir),g'				\
+ 	    -e 's,@CC\@,$(CC),g'					\
+ 	    -e 's,@LD\@,$(LD),g'					\
+-	    -e 's,@DYNAMIC_EXTERNALS_CFLAGS\@,$(DYNAMIC_EXTERNALS_CFLAGS),g' \
+-	    -e 's,@DYNAMIC_EXTERNALS_LDFLAGS\@,$(DYNAMIC_EXTERNALS_LDFLAGS),g' \
++	    -e 's?@DYNAMIC_EXTERNALS_CFLAGS\@?$(DYNAMIC_EXTERNALS_CFLAGS)?g' \
++	    -e 's?@DYNAMIC_EXTERNALS_LDFLAGS\@?$(DYNAMIC_EXTERNALS_LDFLAGS)?g' \
+ 	< $(srcdir)/build/$(CONFIG_SCRIPT).in > $$config_script &&	\
+ 	chmod +x $$config_script
+ # install the external modules

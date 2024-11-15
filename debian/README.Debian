@@ -1,0 +1,51 @@
+scheme48 for Debian
+-------------------
+
+Library Packages
+================
+
+Debian packages which provide library functionality for Scheme48
+should put their package definition files into
+
+    /usr/share/scheme48/<package>/
+
+These can be loaded as usual with
+
+    ,config ,load /usr/share/scheme48/<package>/packages.scm
+
+
+Why not multiple versions in parallel?
+======================================
+
+It would be useful to provide a scheme48 dependency package that just
+depends on the version-specific scheme48-X.Y* packages, so that
+multiple versions of scheme48 can coexist.  Upstream is now set up
+this way, but I (dmoerner) don't have the expertise to set this up yet.
+
+
+Acknowledgments
+===============
+
+I want to thank Riastradh of #scheme on freenode for his patience and
+the endless amount of help he provided. Without him, this package
+wouldn't be here.
+
+
+Slime48
+=======
+
+Slime48 is an IDE for Scheme48 built on top of the Common Lisp IDE for
+Emacs, SLIME.  The Slime48 author writes:
+
+   SLIME48 works only with Scheme48 1.3 because of gratuitous,
+   incompatible changes in Scheme48, and, more prominently, support
+   for Unicode in 1.5 and later in a way that I strongly disagree
+   with.
+
+   -- http://mumble.net/~campbell/slime48.html
+
+Thus, Slime48 WILL NOT WORK with this Scheme48 package.  The less
+powerful comint mechanism provided by cmuscheme.el or cmuscheme48.el
+still work.
+
+ -- Daniel Moerner <dmoerner@gmail.com>, Mon,  2 Mar 2009 20:24:12 -0800

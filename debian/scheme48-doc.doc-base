@@ -1,0 +1,13 @@
+Document: scheme48
+Title: Scheme48 Reference Manual
+Author: Richard Kelsey, Jonathan Rees, Mike Sperber
+Abstract: This is the reference manual for the scheme48 Scheme
+ implementation.
+Section: Programming
+
+Format: pdf
+Files: /usr/share/doc/scheme48/manual.pdf.gz
+
+Format: HTML
+Index: /usr/share/doc/scheme48/html/manual.html
+Files: /usr/share/doc/scheme48/html/*.html

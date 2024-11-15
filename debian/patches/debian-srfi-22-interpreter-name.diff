@@ -1,0 +1,34 @@
+This causes the standardized interfaces scheme-{r5rs,srfi-7} to be
+installed with the "scheme48" suffix, which postinst aliases to the
+suffix-less names.  This allows other packages to provide alternatives
+for these interfaces.
+Index: scheme48/c/script-interpreter.c
+===================================================================
+--- scheme48.orig/c/script-interpreter.c	2013-03-14 10:10:29.000000000 +0100
++++ scheme48/c/script-interpreter.c	2013-03-14 10:10:29.000000000 +0100
+@@ -37,6 +37,12 @@
+     }
+   language_tag = p + 7;
+ 
++  /* Debian specific: Live with scheme-r5rs.scheme48 */
++  p = strchr(language_tag, '.');
++  if (p) {
++       *p = '\0';
++  }
++
+   new_argv = (char **)malloc((argc + 4) * sizeof(char *));
+   if (!new_argv)
+     {
+Index: scheme48/Makefile.in
+===================================================================
+--- scheme48.orig/Makefile.in	2013-03-14 10:10:29.000000000 +0100
++++ scheme48/Makefile.in	2013-03-14 10:10:29.000000000 +0100
+@@ -517,7 +517,7 @@
+ # install the script interpreter front end
+ 	for dialect in r5rs srfi-7; do					\
+ 		$(INSTALL_PROGRAM) script-interpreter			\
+-			$(DESTDIR)$(bindir)/scheme-$$dialect;		\
++			$(DESTDIR)$(bindir)/scheme-$$dialect.scheme48;		\
+ 	done
+ # install the scheme48-config script
+ 	config_script=$(DESTDIR)$(bindir)/$(CONFIG_SCRIPT) &&		\

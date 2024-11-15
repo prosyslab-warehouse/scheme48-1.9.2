@@ -1,0 +1,641 @@
+This package was debianized by Jorgen Schaefer <forcer@debian.org> on
+Thu, 12 Aug 2004 15:04:56 +0200.
+
+It was downloaded from http://www.s48.org/
+
+Upstream Authors: Richard Kelsey and Jonathan Rees.
+Upstream Maintainer: Michael Sperber.
+
+Repackaged .orig.tar.gz:
+
+As of version 1.8+dfsg-1, scheme48 is now distributed with a repacked
+upstream tarball. This was done to remove the file emacs/cmulisp.el,
+which is not DFSG-free. It has this license:
+
+    Copyright Olin Shivers (1988).
+    Please imagine a long, tedious, legalistic 5-page gnu-style copyright
+    notice appearing here to the effect that you may use this code any
+    way you like, as long as you don't charge money for it, remove this
+    notice, or hold me liable for its results.
+
+Attempts to contact Olin Shivers in order to request the removal of
+the distribution constraint failed. emacs/cmulisp.el was never
+distributed with the package, and was only ever present in the
+source. Repacking the tarball by removing this file closed Debian bug
+#509860.
+
+Copyright:
+
+    The GPL can be found in /usr/share/common-licenses/GPL-2+
+
+    Copyright (c) 1993-2006 Richard Kelsey and Jonathan Rees
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions
+    are met:
+    1. Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above
+       copyright notice, this list of conditions and the following
+       disclaimer in the documentation and/or other materials provided
+       with the distribution.
+    3. The name of the authors may not be used to endorse or promote
+       products derived from this software without specific prior
+       written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE AUTHORS ``AS IS'' AND ANY EXPRESS
+    OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+    ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY
+    DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+    GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+    WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+    Distributing Autoconf Output
+    ****************************
+
+    [excerpt from autoconf documentation]
+
+       The configuration scripts that Autoconf produces are covered by
+    the GNU General Public License.  This is because they consist
+    almost entirely of parts of Autoconf itself, rearranged somewhat,
+    and Autoconf is distributed under the terms of the GPL.  As
+    applied to Autoconf, the GPL just means that you need to
+    distribute `configure.in' along with `configure'.
+
+       Programs that use Autoconf scripts to configure themselves do
+    not automatically come under the GPL.  Distributing an Autoconf
+    configuration script as part of a program is considered to be
+    *mere aggregation* of that work with the Autoconf script.  Such
+    programs are not derivative works based on Autoconf; only their
+    configuration scripts are.  We still encourage software authors to
+    distribute their work under terms like those of the GPL, but doing
+    so is not required to use Autoconf.
+
+Most source files have the following copyright / license declaration.
+
+    Copyright (c) 1993-2007 by Richard Kelsey and Jonathan Rees.
+    See file COPYING.
+
+With the exception of doc/node.txt, doc/todo.txt, prescheme/union.scm
+and minor-version-number, all files in the ps-compiler/ subdirectory
+have the following copyright / license declaration.
+
+    Copyright (c) 1993-2007 by Richard Kelsey.  See file COPYING.
+
+Files with different or no copyright / license declarations are listed
+below.
+
+INSTALL
+Makefile.in
+acconfig.h
+build/build-external-modules
+build/build-initial-image.bat
+build/build-usual-image
+build/build-usual-image.bat
+build/check.bat
+build/compile-bibop-gc.bat
+build/compile-twospace-gc.bat
+build/compile-vm.bat
+build/dummy
+build/filenames.bat
+build/filenames.make
+build/generate-c-header.bat
+build/generate-go.bat
+build/generate-scheme48-files-wxi.sh
+build/generate-unicode-info.bat
+build/initial.debug
+build/initial.image
+build/lucid-script.lisp
+build/minor-version-number
+build/scheme48.rc
+c/asm-glue.c
+c/c-mods.h
+c/event.h
+c/fake/dlfcn.h
+c/fake/environ.c
+c/fake/environ.h
+c/fake/glue.c
+c/fake/langinfo.c
+c/fake/langinfo.h
+c/fake/libdl-hp-ux.c
+c/fake/libdl1.c
+c/fake/libdl2.c
+c/fake/sigact.h
+c/fake/strerror.c
+c/fake/strerror.h
+c/fake/sys-select.h
+c/fake/sysexits.h
+c/fd-io.h
+c/main.c
+c/old-scheme48.h
+c/posix/posix.h
+c/posix/s48_signals.h
+c/prescheme.h
+c/scheme48-bibop-heap.c
+c/scheme48-twospace-heap.c
+c/scheme48.h
+c/scheme48heap.c
+c/scheme48heap.h
+c/scheme48image.h
+c/scheme48read-image.c
+c/scheme48vm-prelude.h
+c/scheme48vm.c
+c/scheme48vm.h
+c/scheme48write-image.c
+c/srfi-27.c
+c/sysdep.h.in
+c/unix.h
+configure.in
+doc/hacking.txt
+doc/html/manual-Z-G-D-1.gif
+doc/html/manual-Z-H-1.html
+doc/html/manual-Z-H-10.html
+doc/html/manual-Z-H-11.html
+doc/html/manual-Z-H-2.html
+doc/html/manual-Z-H-3.html
+doc/html/manual-Z-H-4.html
+doc/html/manual-Z-H-5.html
+doc/html/manual-Z-H-6.html
+doc/html/manual-Z-H-7.html
+doc/html/manual-Z-H-8.html
+doc/html/manual-Z-H-9.html
+doc/html/manual-Z-S.css
+doc/html/manual.html
+doc/html/unicode-Z-G-1.gif
+doc/install.txt
+doc/io.txt
+doc/manual.pdf
+doc/manual.ps
+doc/meeting.ps
+doc/news.txt
+doc/no-leaf-env.txt
+doc/scheme48.man
+doc/src/ascii.scm
+doc/src/bibliography.tex
+doc/src/code.tex
+doc/src/command.tex
+doc/src/external.tex
+doc/src/hacks.tex
+doc/src/intro.tex
+doc/src/manual-Z-G-D-1.tex
+doc/src/manual.tex
+doc/src/matter.sty
+doc/src/meeting.tex
+doc/src/module.tex
+doc/src/myindex.tex
+doc/src/posix.tex
+doc/src/proto.tex
+doc/src/summary.tex
+doc/src/thread.tex
+doc/src/unicode-Z-G-1.tex
+doc/src/unicode.tex
+doc/src/user-guide.tex
+doc/src/utilities.tex
+doc/src/version-number.tex
+doc/todo.txt
+doc/type.txt
+emacs/README
+emacs/cmuscheme48.el
+emacs/jar-hacks.el
+gdbinit
+install-sh
+ps-compiler/doc/node.txt
+ps-compiler/doc/todo.txt
+ps-compiler/minor-version-number
+ps-compiler/prescheme/union.scm
+scheme/bcomp/comp-exp.scm
+scheme/bcomp/frame.scm
+scheme/big/check.scm
+scheme/big/unicode-normalization-info.scm
+scheme/cml/async-channel.scm
+scheme/cml/channel.scm
+scheme/cml/cml-check.scm
+scheme/cml/interfaces.scm
+scheme/cml/jar.scm
+scheme/cml/packages.scm
+scheme/cml/placeholder.scm
+scheme/cml/rendezvous.scm
+scheme/cml/test-packages.scm
+scheme/cml/time.scm
+scheme/cml/trans-id.scm
+scheme/env/parse-bytecode.scm
+scheme/env/unicode-info.scm
+scheme/env/version-info.scm
+scheme/misc/sicp-check.scm
+scheme/misc/test-packages.scm
+scheme/posix/regexp-check.scm
+scheme/posix/test-packages.scm
+scheme/rts/syntax-info.scm
+scheme/sort/interfaces.scm
+scheme/sort/packages.scm
+scheme/sort/sort.scm
+scheme/sort/test.scm
+scheme/sort/vector-util.scm
+scheme/srfi/packages.scm
+scheme/srfi/srfi-11.scm
+scheme/srfi/srfi-14-base-char-sets.scm
+scheme/srfi/srfi-14-check.scm
+scheme/srfi/srfi-16.scm
+scheme/srfi/srfi-17.scm
+scheme/srfi/srfi-19-check.scm
+scheme/srfi/srfi-25.scm
+scheme/srfi/srfi-26.scm
+scheme/srfi/srfi-27.scm
+scheme/srfi/srfi-4.scm
+scheme/srfi/srfi-63.scm
+scheme/srfi/srfi-71.scm
+scheme/srfi/test-packages.scm
+scheme/test-packages.scm
+scheme/vm/arith/flonum-arith.scm
+scheme/vm/interp/stack-gc.scm
+scheme/vm/package-defs.scm
+scheme/vm/shared-interfaces.scm
+scheme48.sln
+scheme48.vcproj
+
+    No copyright nor license declaration.
+
+c/unix/dynamo-test.c
+c/unix/dynamo.c
+scheme/debug/low-test-packages.scm
+scheme/debug/small-packages.scm
+scheme/debug/tiny-packages.scm
+scheme/misc/shift-reset.scm
+
+    Explicitly denies having a copyright.  Does not mention licensing.
+
+    [I guess this is equivalent to placing these files in the Public
+    Domain, but I am not a copyright lawyer. --twb]
+
+c/free.c
+
+    All software (c) 1996 Robert G. Burger.
+
+    Permission is hereby granted, free of charge, to any person
+    obtaining a copy of this software, to deal in the software without
+    restriction, including without limitation the rights to use, copy,
+    modify, merge, publish, distribute, sublicense, and/or sell copies
+    of the software.
+
+    The software is provided "as is," without warranty of any kind,
+    express or implied, including but not limited to the warranties of
+    merchantability, fitness for a particular purpose and
+    noninfringement. In no event shall the author be liable for any
+    claim, damages or other liability, whether in an action of
+    contract, tort or otherwise, arising from, out of or in connection
+    with the software or the use or other dealings in the software.
+
+c/bignum.c
+
+    Copyright 1986,1987,1988,1989,1990,1991 Massachusetts Institute of Technology
+    Copyright 1992,1993,1994,2004 Massachusetts Institute of Technology
+
+c/bignum.h
+
+    Copyright 1986,1987,1988,1989,1992,2004 Massachusetts Institute of Technology
+
+c/bignumint.h
+
+    Copyright 1989,1992,1993,2004 Massachusetts Institute of Technology
+
+c/bignum.c
+c/bignum.h
+c/bignumint.h
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are
+    met:
+
+       1. Redistributions of source code must retain the above copyright
+          notice, this list of conditions and the following disclaimer.
+
+       2. Redistributions in binary form must reproduce the above
+          copyright notice, this list of conditions and the following
+          disclaimer in the documentation and/or other materials provided
+          with the distribution.
+
+       3. The name of the author may not be used to endorse or promote
+          products derived from this software without specific prior
+          written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+    IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
+    INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+    HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+    STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+    IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+
+configure
+
+    Copyright (C) 1992, 1993, 1994, 1995, 1996, 1998, 1999, 2000, 2001,
+    2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
+    This configure script is free software; the Free Software Foundation
+    gives unlimited permission to copy, distribute and modify it.
+
+mkinstalldirs
+
+    Author: Noah Friedman <friedman@prep.ai.mit.edu>
+    Created: 1993-05-16
+    Public domain
+
+scheme/sort/delndups.scm
+scheme/sort/lmsort.scm
+scheme/sort/sortp.scm
+scheme/sort/visort.scm
+scheme/sort/vmsort.scm
+
+    Copyright (c) 1998 by Olin Shivers.
+    You may do as you please with this code, as long as you do not
+    delete this notice or hold me responsible for any outcome related
+    to its use.
+
+scheme/srfi/srfi-1.scm
+
+    Copyright (c) 1998, 1999 by Olin Shivers.
+    You may do as you please with this code as long as you do not
+    remove this copyright notice or hold me liable for its use.
+
+scheme/sort/vbinsearch.scm
+
+    Copyright (c) 1998 by Olin Shivers.
+    This code is in the public domain.
+
+scheme/sort/vhsort.scm
+
+    Copyright (c) 2002 by Olin Shivers.
+    This code is open-source; see the end of the file for porting and
+    more copyright information.
+
+    [There is no copyright infrmation at the end of the file --twb]
+
+scheme/srfi/srfi-13.scm
+
+    Copyright (c) 1988-1994 Massachusetts Institute of Technology.
+    Copyright (c) 1998, 1999, 2000 Olin Shivers. All rights reserved.
+
+    Copyright details
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    The prefix/suffix and comparison routines in this code had (extremely
+    distant) origins in MIT Scheme's string lib, and was substantially
+    reworked by Olin Shivers (shivers@ai.mit.edu) 9/98. As such, it is
+    covered by MIT Scheme's open source copyright. See below for details.
+
+    The KMP string-search code was influenced by implementations written
+    by Stephen Bevan, Brian Dehneyer and Will Fitzgerald. However, this
+    version was written from scratch by myself.
+
+    The remainder of this code was written from scratch by myself for scsh.
+    The scsh copyright is a BSD-style open source copyright. See below for
+    details.
+        -Olin Shivers
+
+    MIT Scheme copyright terms
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    This material was developed by the Scheme project at the Massachusetts
+    Institute of Technology, Department of Electrical Engineering and
+    Computer Science.  Permission to copy and modify this software, to
+    redistribute either the original software or a modified version, and
+    to use this software for any purpose is granted, subject to the
+    following restrictions and understandings.
+
+    1. Any copy made of this software must include this copyright notice
+    in full.
+
+    2. Users of this software agree to make their best efforts (a) to
+    return to the MIT Scheme project any improvements or extensions that
+    they make, so that these may be included in future releases; and (b)
+    to inform MIT of noteworthy uses of this software.
+
+    3. All materials developed as a consequence of the use of this
+    software shall duly acknowledge such use, in accordance with the usual
+    standards of acknowledging credit in academic research.
+
+    4. MIT has made no warrantee or representation that the operation of
+    this software will be error-free, and MIT is under no obligation to
+    provide any services, by way of maintenance, update, or otherwise.
+
+    5. In conjunction with products arising from the use of this material,
+    there shall be no use of the name of the Massachusetts Institute of
+    Technology nor of any adaptation thereof in any advertising,
+    promotional, or sales literature without prior written consent from
+    MIT in each case.
+
+    Scsh copyright terms
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+    [The declared license exactly matches the one in COPYING. --twb]
+
+scheme/srfi/srfi-19.scm
+
+    Copyright (C) I/NET, Inc. (2000, 2002, 2003). All Rights Reserved.
+
+    This document and translations of it may be copied and furnished
+    to others, and derivative works that comment on or otherwise
+    explain it or assist in its implementation may be prepared,
+    copied, published and distributed, in whole or in part, without
+    restriction of any kind, provided that the above copyright notice
+    and this paragraph are included on all such copies and derivative
+    works.  However, this document itself may not be modified in any
+    way, such as by removing the copyright notice or references to the
+    Scheme Request For Implementation process or editors, except as
+    needed for the purpose of developing SRFIs in which case the
+    procedures for copyrights defined in the SRFI process must be
+    followed, or as required to translate it into languages other than
+    English.
+
+    The limited permissions granted above are perpetual and will not
+    be revoked by the authors or their successors or assigns.
+
+    This document and the information contained herein is provided on
+    an "AS IS" basis and THE AUTHOR AND THE SRFI EDITORS DISCLAIM ALL
+    WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY
+    WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE
+    ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS
+    FOR A PARTICULAR PURPOSE.
+
+scheme/srfi/srfi-28.scm
+
+    Copyright (C) Scott G. Miller (2002). All Rights Reserved.
+
+scheme/srfi/srfi-37.scm
+
+    Copyright (c) 2002 Anthony Carrico
+
+    [The declared license exactly matches the one in COPYING. --twb]
+
+scheme/srfi/srfi-40.scm
+
+    Copyright (C) 2003 by Philip L. Bewig of Saint Louis, Missouri,
+    United States of America. All rights reserved.
+
+    This document and translations of it may be copied and furnished
+    to others, and derivative works that comment on or otherwise
+    explain it or assist in its implementation may be prepared,
+    copied, published and distributed, in whole or in part, without
+    restriction of any kind, provided that the above copyright notice
+    and this paragraph are included on all such copies and derivative
+    works. However, this document itself may not be modified in any
+    way, such as by removing the copyright notice or references to the
+    Scheme Request For Implementation process or editors, except as
+    needed for the purpose of developing SRFIs in which case the
+    procedures for copyrights defined in the SRFI process must be
+    followed, or as required to translate it into languages other than
+    English.
+
+    The limited permissions granted above are perpetual and will not
+    be revoked by the authors or their successors or assigns.
+
+    This document and the information contained herein is provided on
+    an "AS IS" basis and THE AUTHOR AND THE SRFI EDITORS DISCLAIM ALL
+    WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY
+    WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE
+    ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS
+    FOR A PARTICULAR PURPOSE.
+
+scheme/srfi/srfi-42.scm
+scheme/srfi/srfi-43.scm
+
+    Taylor Campbell wrote this code; he places it in the public domain.
+
+scheme/srfi/srfi-45.scm
+
+    Copyright (C) André van Tonder (2003). All Rights Reserved.
+
+    This document and translations of it may be copied and furnished
+    to others, and derivative works that comment on or otherwise
+    explain it or assist in its implementation may be prepared,
+    copied, published and distributed, in whole or in part, without
+    restriction of any kind, provided that the above copyright notice
+    and this paragraph are included on all such copies and derivative
+    works. However, this document itself may not be modified in any
+    way, such as by removing the copyright notice or references to the
+    Scheme Request For Implementation process or editors, except as
+    needed for the purpose of developing SRFIs in which case the
+    procedures for copyrights defined in the SRFI process must be
+    followed, or as required to translate it into languages other than
+    English.
+
+    The limited permissions granted above are perpetual and will not
+    be revoked by the authors or their successors or assigns.
+
+    This document and the information contained herein is provided on
+    an "AS IS" basis and THE AUTHOR AND THE SRFI EDITORS DISCLAIM ALL
+    WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY
+    WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE
+    ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS
+    FOR A PARTICULAR PURPOSE.
+
+scheme/srfi/srfi-60.scm
+
+    Copyright (C) 2005 David Van Horn
+
+    Released under the same terms as the SRFI reference implementation
+    included below.
+
+    Copyright (C) 1991, 1993, 2001, 2003, 2005 Aubrey Jaffer
+
+    Permission to copy this software, to modify it, to redistribute
+    it, to distribute modified versions, and to use it for any purpose
+    is granted, subject to the following restrictions and
+    understandings.
+
+    1.  Any copy made of this software must include this copyright
+    notice in full.
+
+    2.  I have made no warranty or representation that the operation
+    of this software will be error-free, and I am under no obligation
+    to provide any services, by way of maintenance, update, or
+    otherwise.
+
+    3.  In conjunction with products arising from the use of this
+    material, there shall be no use of my name in any advertising,
+    promotional, or sales literature without prior written consent in
+    each case.
+
+scheme/srfi/srfi-61.scm
+
+    Copyright (C) 2004 Taylor Campbell.  All rights reserved.
+
+    This document and translations of it may be copied and furnished
+    to others, and derivative works that comment on or otherwise
+    explain it or assist in its implementation may be prepared,
+    copied, published and distributed, in whole or in part, without
+    restriction of any kind, provided that the above copyright notice
+    and this paragraph are included on all such copies and derivative
+    works.  However, this document itself may not be modified in any
+    way, such as by removing this copyright notice or references to
+    the Scheme Request for Implementation process or editors, except
+    as needed for the purpose of developing SRFIs in which case the
+    procedures for copyrights defined in the SRFI process must be
+    followed, or as required to translate it into languages other than
+    English.
+
+    The limited permissions granted above are perpetual and will not
+    be revoked by the authors or their successors or assigns.
+
+    This document and the information contained herein is provided on
+    an "AS IS" basis and THE AUTHORS AND THE SRFI EDITORS DISCLAIM ALL
+    WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY
+    WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE
+    ON ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR
+    FITNESS FOR A PARTICULAR PURPOSE.
+
+scheme/srfi/srfi-67.scm
+
+    Copyright (c) 2005 Sebastian Egner and Jens Axel S{\o}gaard.
+
+    Permission is hereby granted, free of charge, to any person
+    obtaining a copy of this software and associated documentation
+    files (the ``Software''), to deal in the Software without
+    restriction, including without limitation the rights to use, copy,
+    modify, merge, publish, distribute, sublicense, and/or sell copies
+    of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be
+    included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+    DEALINGS IN THE SOFTWARE.
+
+scheme/srfi/srfi-78.scm
+
+    Copyright (c) 2005-2006 Sebastian Egner.
+
+    Permission is hereby granted, free of charge, to any person
+    obtaining a copy of this software and associated documentation
+    files (the ``Software''), to deal in the Software without
+    restriction, including without limitation the rights to use, copy,
+    modify, merge, publish, distribute, sublicense, and/or sell copies
+    of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be
+    included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+    DEALINGS IN THE SOFTWARE.

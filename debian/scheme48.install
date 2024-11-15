@@ -1,0 +1,6 @@
+debian/tmp/usr/share/man/*
+debian/tmp/usr/share/scheme48-1.9.2/*
+debian/tmp/usr/include/*
+debian/tmp/usr/lib/*
+debian/tmp/usr/bin/*
+

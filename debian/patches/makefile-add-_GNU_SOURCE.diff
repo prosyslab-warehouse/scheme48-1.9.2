@@ -1,0 +1,16 @@
+Fix compile error introduced with glibc-2.9. Patch from Panagiotis Christopoulus
+<pchrist@gentoo.org>.
+
+Index: scheme48/Makefile.in
+===================================================================
+--- scheme48.orig/Makefile.in	2013-03-14 10:29:23.000000000 +0100
++++ scheme48/Makefile.in	2013-03-14 10:29:51.000000000 +0100
+@@ -61,7 +61,7 @@
+ # Ultrix
+ #   LDFLAGS = -N
+ 
+-COMPILING_ITSELF_DEFS = $(DEFS) -D__COMPILING_SCHEME48_ITSELF__ -DS48_HOST_ARCHITECTURE=\"$(HOST_ARCHITECTURE)\"
++COMPILING_ITSELF_DEFS = $(DEFS) -D_GNU_SOURCE -D__COMPILING_SCHEME48_ITSELF__ -DS48_HOST_ARCHITECTURE=\"$(HOST_ARCHITECTURE)\"
+ 
+ .c.o:
+ 	$(CC) -c $(CPPFLAGS) $(COMPILING_ITSELF_DEFS) -I ./c -I$(srcdir)/c -I$(srcdir)/c/net -I$(srcdir)/c/bibop $(CFLAGS) -o $@ $<

@@ -1,0 +1,35 @@
+This patch fixes two ways that scheme48 fails to build from source on
+hurd-i386. First, pthread.h must be manually included since it's part
+of hurd-dev, not libc6-dev. Second, MAXHOSTNAMELEN is not defined on
+hurd-i386, so we manually define it here. There are more elegant ways
+to fix MAXHOSTNAMELEN that involve checking the hostname length at
+runtime and dynamically reallocating memory, but since upstream's
+development branch has already deprecated this code I implemented the
+simple fix.
+
+ -- Daniel Moerner <dmoerner@gmail.com>  Thu, 04 Jun 2009 22:08:13 -0700
+
+diff --git a/c/unix/socket.c b/c/unix/socket.c
+index a0a5e34..a994fc2 100644
+--- a/c/unix/socket.c
++++ b/c/unix/socket.c
+@@ -19,6 +19,7 @@
+ #include <string.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
++#include <pthread.h>    /* manual inclusion needed on hurd-i386 */
+ 
+ #include "c-mods.h"
+ #include "scheme48.h"
+@@ -29,6 +30,11 @@
+ /* Henry Cejtin says that 5 is the largest safe number for this. */
+ #define	LISTEN_QUEUE_SIZE	5
+ 
++/* MAXHOSTNAMELEN is not defined on hurd-i386, so we manually define it now. */
++#ifndef MAXHOSTNAMELEN
++#define MAXHOSTNAMELEN 1024
++#endif
++
+ extern void		s48_init_socket(void);
+ static s48_value	s48_socket(s48_value udp_p, s48_value input_p),
+ 			s48_bind(s48_value socket_channel, s48_value number),

@@ -1,0 +1,111 @@
+This patch is needed to avoid a loop with waitpid() that leads to 100% cpu usage
+under certain conditions. This patch solves the problem by moving the loop into
+Scheme code instead of C.
+
+Patch by Andreas Rottmann <rotty@debian.org>
+Index: scheme48-1.8/c/posix/proc.c
+===================================================================
+--- scheme48-1.8.orig/c/posix/proc.c	2008-01-16 23:50:48.000000000 +1100
++++ scheme48-1.8/c/posix/proc.c	2008-05-15 20:12:51.000000000 +1000
+@@ -256,37 +256,35 @@
+ static s48_value
+ posix_waitpid(void)
+ {
+-  while(1==1) {
+-    int stat;
+-    pid_t c_pid = waitpid(-1, &stat, WNOHANG);
+-    if (c_pid == -1) {
+-      if (errno == ECHILD)		/* no one left to wait for */
+-	return S48_FALSE;
+-      else if (errno != EINTR)
+-	s48_raise_os_error(errno);
+-    }
+-    else {
+-      s48_value sch_pid = lookup_pid(c_pid);
+-      s48_value temp = S48_UNSPECIFIC;
+-      S48_DECLARE_GC_PROTECT(2);
++  int stat;
++  pid_t c_pid = waitpid(-1, &stat, WNOHANG);
++  if (c_pid == -1) {
++    if (errno == ECHILD)               /* no one left to wait for */
++      return S48_FALSE;
++    else if (errno != EINTR)
++      s48_raise_os_error(errno);
++  }
++  else {
++    s48_value sch_pid = lookup_pid(c_pid);
++    s48_value temp = S48_UNSPECIFIC;
++    S48_DECLARE_GC_PROTECT(2);
+       
+-      S48_GC_PROTECT_2(sch_pid, temp);
+-
+-      if (sch_pid != S48_FALSE) {
+-	if (WIFEXITED(stat))
+-	  S48_UNSAFE_RECORD_SET(sch_pid, 1, s48_enter_fixnum(WEXITSTATUS(stat)));
+-	else {
+-	  temp = enter_signal(WTERMSIG(stat));
+-	  S48_UNSAFE_RECORD_SET(sch_pid, 2, temp);
+-	}
++    S48_GC_PROTECT_2(sch_pid, temp);
+ 
+-	S48_GC_UNPROTECT();
+-	return sch_pid;
++    if (sch_pid != S48_FALSE) {
++      if (WIFEXITED(stat))
++        S48_UNSAFE_RECORD_SET(sch_pid, 1, s48_enter_fixnum(WEXITSTATUS(stat)));
++      else {
++        temp = enter_signal(WTERMSIG(stat));
++        S48_UNSAFE_RECORD_SET(sch_pid, 2, temp);
+       }
+-      else
+-     	S48_GC_UNPROTECT();
++      S48_GC_UNPROTECT();
++      return sch_pid;
+     }
++    else
++      S48_GC_UNPROTECT();
+   }
++  return S48_TRUE; /* need to call again */
+ }
+ 
+ /*
+Index: scheme48-1.8/scheme/posix/packages.scm
+===================================================================
+--- scheme48-1.8.orig/scheme/posix/packages.scm	2008-01-11 03:00:49.000000000 +1100
++++ scheme48-1.8/scheme/posix/packages.scm	2008-05-15 20:12:51.000000000 +1000
+@@ -182,6 +182,7 @@
+ 	external-calls load-dynamic-externals
+ 	interrupts
+ 	placeholders
++        (subset threads (sleep))
+ 	weak
+ 	value-pipes
+ 	debug-messages
+Index: scheme48-1.8/scheme/posix/proc.scm
+===================================================================
+--- scheme48-1.8.orig/scheme/posix/proc.scm	2008-01-11 03:00:49.000000000 +1100
++++ scheme48-1.8/scheme/posix/proc.scm	2008-05-15 20:12:51.000000000 +1000
+@@ -146,14 +146,15 @@
+ 		 (car maybe-pid))))
+     (let loop ()
+       (let ((next (posix-waitpid)))
+-	(if next
+-	    (let ((placeholder (process-id-placeholder next)))
+-	      (if placeholder
+-		  (begin
+-		    (placeholder-set! placeholder #t)
+-		    (set-process-id-placeholder! pid #f))) ; no longer needed
+-	      (if (not (eq? pid next))
+-		  (loop))))))))
++        (cond ((eqv? next #t) (sleep 5) (loop))
++              (next
++               (let ((placeholder (process-id-placeholder next)))
++                 (if placeholder
++                     (begin
++                       (placeholder-set! placeholder #t)
++                       (set-process-id-placeholder! pid #f))) ; no longer needed
++                 (if (not (eq? pid next))
++                     (loop)))))))))
+ 
+ (import-lambda-definition posix-waitpid ())
+ 

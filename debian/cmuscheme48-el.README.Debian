@@ -1,0 +1,11 @@
+cmuscheme48 for Debian
+----------------------
+
+Since cmuscheme48 incompatibly modifies the `scheme-mode-map', it is
+not loaded by default. To activate it, add the following to your
+.emacs:
+
+    (eval-after-load "cmuscheme"
+      '(require 'cmuscheme48))))
+
+ -- Jorgen Schaefer <forcer@debian.org>, Mon Apr 18 02:11:10 2005

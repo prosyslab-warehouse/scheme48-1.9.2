@@ -1,0 +1,50 @@
+Source: scheme48
+Section: lisp
+Priority: optional
+Maintainer: Thorsten Alteholz <debian@alteholz.de>
+Build-Depends: debhelper-compat (= 12)
+	, dh-elpa (>= 0.0.17)
+Standards-Version: 4.5.0
+Vcs-Browser: https://salsa.debian.org/alteholz/scheme48
+Vcs-Git: https://salsa.debian.org/alteholz/scheme48.git
+Homepage: https://s48.org/
+
+Package: scheme48
+Architecture: any
+Provides: scheme-r5rs, scheme-srfi-7
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: scheme48-doc, cmuscheme48-el
+Description: simple, modular, and lightweight Scheme implementation
+ Scheme48 is an implementation of Scheme written by Richard Kelsey
+ and Jonathan Rees. It is based on a byte-code interpreter and
+ incorporates such elements as a sophisticated module system, a
+ pre-emptive & user-level thread system, a well-integrated
+ interactive environment, Clinger's explicit renaming low-level
+ macros, and decent efficiency for its architecture.
+
+Package: scheme48-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Recommends: scheme48
+Description: Documentation for the Scheme48 implementation of Scheme
+ Scheme48 is an implementation of Scheme written by Richard Kelsey
+ and Jonathan Rees. It is based on a byte-code interpreter and
+ incorporates such elements as a sophisticated module system, a
+ pre-emptive & user-level thread system, a well-integrated
+ interactive environment, Clinger's explicit renaming low-level
+ macros, and decent efficiency for its architecture.
+ .
+ This package provides "The Incomplete Scheme48 Reference Manual" in
+ html and pdf form.
+
+Package: cmuscheme48-el
+Architecture: all
+Depends: emacsen-common, emacs | emacsen, scheme48, ${misc:Depends}, ${elpa:Depends}
+Built-Using: ${misc:Built-Using}
+Description: Emacs mode specialized for Scheme48
+ Scheme48 associates loaded code with specific files. This extension
+ to the normal scheme-mode of Emacs uses this facility to associated
+ data sent to a inferior Scheme process with the correct file. Scheme
+ 48 will automatically evaluate the code in the correct package for
+ the file.

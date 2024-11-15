@@ -1,0 +1,20 @@
+Description: List libraries after the objects that require them
+Author: Colin Watson <cjwatson@ubuntu.com>
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/832929
+Forwarded: no
+Last-Update: 2011-09-18
+
+Index: scheme48/Makefile.in
+===================================================================
+--- scheme48.orig/Makefile.in	2013-03-10 15:04:37.000000000 +0100
++++ scheme48/Makefile.in	2013-03-10 15:04:37.000000000 +0100
+@@ -286,8 +286,7 @@
+ 	c/scheme48.exp c/scheme48.def
+ 	$(CC) $(LDFLAGS) $(LDFLAGS_VM) $(CFLAGS) $(CPPFLAGS) -o $@ c/main.o		\
+ 		$(OBJS) $(GC_OBJS) $(UNIX_OBJS)				\
+-		$(LIBOBJS) $(LIBS)					\
+-		$(EXTERNAL_OBJECTS)
++		$(LIBOBJS) $(EXTERNAL_OBJECTS) $(LIBS)
+ 	# Cygwin
+ 	if test -x /usr/bin/dlltool; then \
+ 		dlltool --dllname $(VM).exe --output-lib $(VM).a --def $(srcdir)/c/scheme48.def; \

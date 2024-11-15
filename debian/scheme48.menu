@@ -1,0 +1,2 @@
+?package(scheme48):needs="vc" section="Applications/Programming"\
+  title="scheme48" command="/usr/bin/scheme48"

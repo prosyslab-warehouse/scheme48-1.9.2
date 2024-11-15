@@ -1,0 +1,18 @@
+This patch fixes these lintian warnings:
+
+W: scheme48: shared-lib-without-dependency-information ./usr/lib/scheme48-1.8/posix.so
+W: scheme48: shared-lib-without-dependency-information ./usr/lib/scheme48-1.8/srfi-27.so
+
+Index: scheme48/Makefile.in
+===================================================================
+--- scheme48.orig/Makefile.in	2013-03-14 10:30:34.000000000 +0100
++++ scheme48/Makefile.in	2013-03-14 10:30:34.000000000 +0100
+@@ -50,7 +50,7 @@
+ 
+ DYNAMIC_EXTERNALS_CFLAGS=@DYNAMIC_EXTERNALS_CFLAGS@
+ DYNAMIC_EXTERNALS_LDFLAGS=@DYNAMIC_EXTERNALS_LDFLAGS@
+-DYNAMIC_EXTERNALS_LDFLAGS_IN_PLACE=@DYNAMIC_EXTERNALS_LDFLAGS_IN_PLACE@
++DYNAMIC_EXTERNALS_LDFLAGS_IN_PLACE=@DYNAMIC_EXTERNALS_LDFLAGS_IN_PLACE@ -lc
+ ### End of `configure' section###
+ 
+ # HP 9000 series, if you don't have gcc

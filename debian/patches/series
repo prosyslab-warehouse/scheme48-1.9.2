@@ -1,0 +1,8 @@
+no-env-trampoline.diff
+debian-srfi-22-interpreter-name.diff
+debian-user-name.diff
+makefile-add-_GNU_SOURCE.diff
+makefile-add-lc-to-LDFLAGS.diff
+man-properly-escape-minuses.diff
+security-tmpfile.patch
+spelling.patch

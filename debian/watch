@@ -1,0 +1,21 @@
+# See uscan(1) manual for info.
+# This file is currently broken.  When it works, move it to ./watch.
+version=4
+
+# Because http://s48.org/ has a link to 1.7/download.html instead of
+# to 1.7/ -- this means that the naïve
+#
+#     http://s48.org/(?:[[:digit:].]+)/scheme48-(?:[[:digit:].]+).tgz
+#
+# doesn't work, because uscan fetches http://s48.org/ and tries to
+# find a link matching (?:[[:digit:].]+)/?$, which 1.7/download.html
+# does not.
+#
+# Eric Cooper provided the following (working) replacement:
+#opts=downloadurlmangle=s{s48.org/(.*)/download.html}{s48.org/$1/scheme48-$1.tgz} \
+# http://s48.org/index.html  (.*)/download.html
+#
+# Daniel Leidert provided the following (working) replacement:
+#  dversionmangle shamelessly stolen from http://wiki.debian.org/DEHS
+opts=dversionmangle=s/\+dfsg//,downloadurlmangle=s{([^/]+)/download.html$}{$1/scheme48-$1.tgz},filenamemangle=s{([^/]+)/download.html}{scheme48-$1.tgz} \
+  https://s48.org/index.html  ([\d\.]+)/download.html debian uupdate

@@ -1,0 +1,24 @@
+Description: fix spelling detected by lintian
+Author: Thorsten Alteholz <debian@alteholz.de>
+Index: scheme48-1.9.2/c/net/address.c
+===================================================================
+--- scheme48-1.9.2.orig/c/net/address.c	2012-12-27 17:46:24.000000000 +0100
++++ scheme48-1.9.2/c/net/address.c	2018-08-15 12:54:33.768716415 +0200
+@@ -872,7 +872,7 @@
+ #endif
+       }
+     default:
+-      s48_assertion_violation_2(call, "s48_inet_pton", "invalid adddress family", 1, sch_af);
++      s48_assertion_violation_2(call, "s48_inet_pton", "invalid address family", 1, sch_af);
+     }
+ 
+   return s48_false_2(call);
+@@ -923,7 +923,7 @@
+ 	return s48_enter_string_latin_1_2(call, dest);
+       }
+     default:
+-      s48_assertion_violation_2(call, "s48_inet_ntop", "invalid adddress family", 1, sch_af);
++      s48_assertion_violation_2(call, "s48_inet_ntop", "invalid address family", 1, sch_af);
+     }
+ }
+ 
